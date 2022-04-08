@@ -2,6 +2,7 @@
 
 require './connexion.php';
 
+
 $getpost = "SELECT * FROM `post`";
 $postList = [];
 
