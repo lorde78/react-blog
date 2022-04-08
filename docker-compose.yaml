@@ -1,0 +1,32 @@
+version: '3.1'
+
+services:
+    php:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - "5555:80"
+        volumes:
+            - ./app:/var/www/html
+
+    db:
+        image: mariadb
+        restart: always
+        volumes:
+            - ./database/data.sql:/docker-entrypoint-initdb.d/data.sql
+        environment:
+            MYSQL_DATABASE: exampledb
+            MYSQL_USER: exampleuser
+            MYSQL_PASSWORD: examplepass
+            MYSQL_RANDOM_ROOT_PASSWORD: '1'
+
+    phpmyadmin:
+        image: phpmyadmin
+        restart: always
+        ports:
+            - 8080:80
+        environment:
+            - PMA_ARBITRARY=1
+
+
