@@ -8,3 +8,4 @@ $addpost = "INSERT INTO `post` (`idPost`, `title`, `content`, `idUser`) VALUES (
 // } catch (\Exception $e){
 //     die('MySQL Error : ' . $e->getMessage());
 // }
+

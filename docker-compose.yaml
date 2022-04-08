@@ -14,7 +14,7 @@ services:
         image: mariadb
         restart: always
         volumes:
-            - ./database/data.sql:/docker-entrypoint-initdb.d/data.sql
+            - ./database/exampledb.sql:/docker-entrypoint-initdb.d/exampledb.sql
         environment:
             MYSQL_DATABASE: exampledb
             MYSQL_USER: exampleuser

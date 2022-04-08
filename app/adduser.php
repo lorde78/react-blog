@@ -1,7 +1,12 @@
 <?php
 
 require './connexion.php';
-$adduser = "INSERT INTO `user` (`idUser`, `pseudo`, `password`) VALUES (NULL, 'zidane', '12345');";
+require './tokengenerator.php';
+
+$token = strval(bin2hex($bytes));
+
+$adduser = "INSERT INTO `user` (`idUser`, `username`, `password`, `token`) VALUES (NULL, 'bravo', '12345', '{$token}' );";
+
 
 // try {
 //     mysqli_query($conn, $adduser);
