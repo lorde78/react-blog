@@ -1,13 +1,13 @@
 import { useState } from "react";
 import useForm from "../hook/useForm";
 
-const FormCreateUser = () => {
+const FormLoginUser = () => {
 
     const { handleChange, values, handleSubmit, handlePostList} = useForm();
 
 	return (
 		<>
-			<h1>Please Register</h1>
+			<h1>Please Login</h1>
 			<form action="" className="container" onSubmit={handleSubmit}>
 				<div className="mb-3">
 					<label htmlFor="name" className="form-label"></label>
@@ -29,10 +29,10 @@ const FormCreateUser = () => {
 						onChange={handleChange}
 					></input>
 				</div>
-				<button type="submit" className="btn btn-primary">Register</button>
+				<button type="submit"className="btn btn-primary">Login</button>
 			</form>
 		</>
 	);
 };
 
-export default FormCreateUser;
+export default FormLoginUser;

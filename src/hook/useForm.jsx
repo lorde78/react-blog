@@ -1,9 +1,17 @@
 import { useState, useEffect } from "react";
 
 const useForm = () => {
+
+	const [postList,  setpostList] = useState ({
+		title: "",
+		content:""
+	});
+
 	const [values, setValues] = useState({
 		username: "",
 		password: "",
+		title: "",
+		content:""
 	});
 
 	const handleChange = (e) => {
@@ -29,26 +37,8 @@ const useForm = () => {
 		})
 			.then((resp) => resp.json())
 			.then((respJSON) => console.log(respJSON));
-	};
-
-
-
+	}
 	
-
-	// const submitHandler = async (event) => {
-	//     event.preventDefault();
-	//     console.log(this.state.username);
-	//     const data = this.state.username;
-	//     await fetch("http://localhost:9090/assign/getApi.php",{
-	//         method:'POST',
-	//         headers: {
-	//             'Content-Type': 'application/json'
-	//           },
-	//           body: JSON.stringify({data})
-	//     }).then((res)=>console.log(res));
-
-	// }
-
 	return { handleChange, values, handleSubmit };
 };
 
