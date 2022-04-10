@@ -2,10 +2,7 @@ import { useState, useEffect } from "react";
 
 const useForm = () => {
 
-	const [postList,  setpostList] = useState ({
-		title: "",
-		content:""
-	});
+	const [ userLogged, setUserLogged] = useState([])
 
 	const [values, setValues] = useState({
 		username: "",
@@ -39,7 +36,27 @@ const useForm = () => {
 			.then((respJSON) => console.log(respJSON));
 	}
 	
-	return { handleChange, values, handleSubmit };
+	const handleLogin = async (e) => {
+        e.preventDefault()
+        const data = values;
+        await fetch('http://localhost:5555/getuser.php', {
+            method: 'GET',
+            mode: 'cors',
+        })
+            .then(resp => resp.json())
+            .then(respJSON => {
+                setUserLogged(respJSON.filter(user => user.username === data.username && user.password === data.password));
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+
+	const handleDeconnexion = async (e) => {
+        setUserLogged();
+    }
+
+	return { handleChange, values, handleSubmit, handleLogin, handleDeconnexion };
 };
 
 export default useForm;
